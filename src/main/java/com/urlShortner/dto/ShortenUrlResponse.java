@@ -1,5 +1,8 @@
 package com.urlShortner.dto;
 
+import org.springframework.stereotype.Service;
+
+
 public class ShortenUrlResponse {
 
 
