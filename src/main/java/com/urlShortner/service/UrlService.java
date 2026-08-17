@@ -7,17 +7,24 @@ import com.urlShortner.exception.ShortUrlNotFoundException;
 import com.urlShortner.repository.UrlRepository;
 import com.urlShortner.util.ShortCodeGenerator;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UrlService {
 
+    @Value("${app.base-url}")
+    private String baseUrl;
+
     private final UrlRepository urlRepository;
     private final ShortCodeGenerator shortCodeGenerator;
 
-    public UrlService(UrlRepository urlRepository, ShortCodeGenerator shortCodeGenerator){
+    public UrlService(UrlRepository urlRepository, ShortCodeGenerator shortCodeGenerator,
+                      @Value("${app.base-url}") String baseUrl){
         this.urlRepository = urlRepository;
         this.shortCodeGenerator = shortCodeGenerator;
+        this.baseUrl = baseUrl;
     }
     public ShortenUrlResponse createShortUrl(ShortenUrlRequest request) {
         Url url = new Url();
@@ -35,7 +42,7 @@ public class UrlService {
 
 
 
-        String shortUrl = "http://localhost:8080/" + savedUrl.getShortCode();
+         String shortUrl = baseUrl + "/r/" + savedUrl.getShortCode();
         response.setShortUrl(shortUrl);
 
         return response;

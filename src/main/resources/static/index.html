@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS will be added later -->
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo">🔗 Sniply</div>
+</header>
+
+<!-- Main Content -->
+<main class="container">
+
+    <h1 class="heading">Shorten Your Long URLs</h1>
+    <p class="description">
+        Paste a long link below and get a short, shareable URL in seconds.
+    </p>
+
+    <!-- Input Section -->
+    <div class="input-section">
+        <input
+                type="url"
+                id="urlInput"
+                placeholder="Enter your long URL here..."
+                required
+        />
+        <button id="shortenBtn">Shorten</button>
+    </div>
+
+    <!-- Result Section (hidden until a URL is shortened) -->
+    <div class="result-section" id="resultSection" hidden>
+        <p class="result-label">Your shortened URL:</p>
+        <div class="result-box">
+            <span id="shortUrl"></span>
+            <button id="copyBtn">Copy</button>
+        </div>
+    </div>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>

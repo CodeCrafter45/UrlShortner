@@ -5,6 +5,8 @@ import com.urlShortner.dto.ShortenUrlResponse;
 import com.urlShortner.entity.Url;
 import com.urlShortner.service.UrlService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,11 @@ public class UrlController {
                 this.urlService = urlService;
         }
         @PostMapping("/shorten")
-        public ShortenUrlResponse shorten( @Valid @RequestBody ShortenUrlRequest request){
-                return urlService.createShortUrl(request);
+        public ResponseEntity<ShortenUrlResponse> shorten(@Valid @RequestBody ShortenUrlRequest request){
+                return ResponseEntity
+                        .status(HttpStatus.CREATED)
+                        .body(urlService.createShortUrl(request));
+
         }
 
 
