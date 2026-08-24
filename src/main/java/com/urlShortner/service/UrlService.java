@@ -2,11 +2,14 @@ package com.urlShortner.service;
 
 import com.urlShortner.dto.ShortenUrlRequest;
 import com.urlShortner.dto.ShortenUrlResponse;
+import com.urlShortner.dto.UrlStatsResponse;
 import com.urlShortner.entity.Url;
 import com.urlShortner.exception.ShortUrlNotFoundException;
 import com.urlShortner.repository.UrlRepository;
 import com.urlShortner.util.ShortCodeGenerator;
-import java.util.Optional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,7 +31,11 @@ public class UrlService {
     }
     public ShortenUrlResponse createShortUrl(ShortenUrlRequest request) {
         Url url = new Url();
-        url.setOriginalUrl(request.getUrl());
+        String original = request.getUrl();
+        if (!original.startsWith("http://") && !original.startsWith("https://")) {
+            original = "https://" + original;
+        }
+        url.setOriginalUrl(original);
 
         String code =shortCodeGenerator.generateShortCode();
 
@@ -51,16 +58,31 @@ public class UrlService {
 
     public String getOriginalUrl(String shortCode) {
 
-        Optional<Url> result =
-                urlRepository.findByShortCode(shortCode);
+        Url url = urlRepository.findByShortCode(shortCode)
+                .orElseThrow(() -> new ShortUrlNotFoundException("Short URL not found"));
 
-        if(result.isEmpty()) {
-            throw new ShortUrlNotFoundException("Short URL not found");
-        }
-
-        Url url = result.get();
+        url.setClickCount(url.getClickCount() + 1);
+        urlRepository.save(url);
 
         return url.getOriginalUrl();
+    }
+
+    public List<UrlStatsResponse> getAllStats(){
+        List<Url> urls = urlRepository.findAll();
+        List<UrlStatsResponse> responses = new ArrayList<>();
+
+        for (Url url : urls) {
+            UrlStatsResponse dto = new UrlStatsResponse();
+
+            dto.setShortCode(url.getShortCode());
+            dto.setOriginalUrl(url.getOriginalUrl());
+            dto.setClickCount(url.getClickCount());
+
+            responses.add(dto);
+        }
+
+        return responses;
+
     }
 
 

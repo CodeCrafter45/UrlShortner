@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import java.net.URI;
 
 @RestController
 public class RedirectController {
@@ -18,6 +19,8 @@ public class RedirectController {
         this.urlService = urlService;
     }
 
+
+
     @GetMapping("/r/{shortCode}")
     public ResponseEntity<Void> redirect(@PathVariable String shortCode) {
 
@@ -25,7 +28,7 @@ public class RedirectController {
 
         return ResponseEntity
                 .status(HttpStatus.FOUND)
-                .header("Location", originalUrl)
+                .location(URI.create(originalUrl))
                 .build();
     }
 }

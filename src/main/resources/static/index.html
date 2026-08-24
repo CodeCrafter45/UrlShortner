@@ -34,6 +34,8 @@
         <button id="shortenBtn">Shorten</button>
     </div>
 
+    <p id="errorMessage" class="error-message" hidden></p>
+
     <!-- Result Section (hidden until a URL is shortened) -->
     <div class="result-section" id="resultSection" hidden>
         <p class="result-label">Your shortened URL:</p>
@@ -42,6 +44,45 @@
             <button id="copyBtn">Copy</button>
         </div>
     </div>
+
+    <!-- Analytics Dashboard -->
+    <section class="stats-section">
+        <div class="stats-header">
+            <h2>Sniply Analytics</h2>
+            <button id="loadStatsBtn" class="refresh-btn">
+                ⟳ Refresh
+            </button>
+        </div>
+
+        <div class="stats-cards">
+            <div class="card">
+                <p>Total URLs</p>
+                <h3 id="totalUrls">0</h3>
+            </div>
+
+            <div class="card">
+                <p>Total Clicks</p>
+                <h3 id="totalClicks">0</h3>
+            </div>
+
+            <div class="card">
+                <p>Top Short Code</p>
+                <h3 id="topCode">--</h3>
+            </div>
+        </div>
+
+        <table class="stats-table">
+            <thead>
+            <tr>
+                <th>Short Code</th>
+                <th>Original URL</th>
+                <th>Clicks</th>
+            </tr>
+            </thead>
+
+            <tbody id="statsBody"></tbody>
+        </table>
+    </section>
 
 </main>
 <script src="script.js"></script>

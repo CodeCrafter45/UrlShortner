@@ -1,48 +1,107 @@
-# 🔗 URL Shortener
+# 🔗 Sniply — URL Shortener
 
-A scalable URL Shortener built with **Spring Boot** that transforms long URLs into compact, shareable links. The project focuses on clean architecture, RESTful API design, and backend best practices using Java and Spring Boot.
+A production-ready **URL Shortener** built with **Spring Boot, MySQL, and Docker**. Sniply transforms long URLs into compact, shareable links while providing click analytics through a clean REST API and responsive web interface.
 
-## 📖 Overview
-
-This application allows users to generate short URLs from long URLs and redirect back to the original destination. It is being developed as a backend engineering project to explore real-world concepts such as REST APIs, database design, URL encoding, validation, and scalable application architecture.
+---
 
 ##  Features
 
-- Shorten long URLs
-- Redirect using short URLs
-- URL validation
-- Persistent storage with MySQL
-- RESTful API design
-- Layered architecture (Controller → Service → Repository)
-- Global exception handling
-- Input validation
-- Clean and maintainable code
+* 🔗 Generate short URLs instantly
+* ↗️ Redirect using unique short codes
+* 📊 Click analytics dashboard
+* ✅ URL validation with meaningful error messages
+* 📋 One-click copy to clipboard
+* 📚 Interactive API documentation with Swagger UI
+* 🧪 Unit testing with Mockito
+* ⚠️ Global exception handling
+* 🐳 One-command setup using Docker Compose
 
-### Planned Enhancements
-
-- Custom short aliases
-- Click analytics
-- URL expiration
-- User authentication
-- Rate limiting
-- Caching with Redis
-- Docker support
-- Unit and integration testing
+---
 
 ## 🛠 Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| Java 17 | Programming Language |
-| Spring Boot | Backend Framework |
-| Spring Data JPA | Database Access |
-| MySQL | Relational Database |
-| Maven | Build Tool |
-| Lombok | Boilerplate Reduction |
+| Technology              | Purpose               |
+| ----------------------- | --------------------- |
+| Java 17                 | Programming Language  |
+| Spring Boot             | Backend Framework     |
+| Spring Data JPA         | ORM & Database Access |
+| MySQL 8                 | Relational Database   |
+| Maven                   | Build Tool            |
+| Lombok                  | Boilerplate Reduction |
+| Swagger (OpenAPI)       | API Documentation     |
+| Docker & Docker Compose | Containerization      |
+
+
+
+
+
+## 🚀 Run the Project (Recommended)
+
+### Prerequisites
+
+* Docker Desktop installed
+* Docker Engine running
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/CodeCrafter45/UrlShortner.git
+cd UrlShortner
+```
+
+### 2. Start the application
+
+```bash
+docker compose up --build
+```
+
+Docker will automatically:
+
+* Build the Spring Boot application
+* Create the MySQL database
+* Configure networking
+* Start both containers
+
+### 3. Open in your browser
+
+| Service        | URL                                   |
+| -------------- | ------------------------------------- |
+| 🌐 Application | http://localhost:8080                 |
+| 📚 Swagger UI  | http://localhost:8080/swagger-ui.html |
+
+---
+
+## 🧪 API Endpoints
+
+| Method | Endpoint           | Description              |
+| ------ | ------------------ | ------------------------ |
+| POST   | `/api/url/shorten` | Create a short URL       |
+| GET    | `/r/{shortCode}`   | Redirect to original URL |
+| GET    | `/api/url/stats`   | Retrieve click analytics |
+
+---
+
+## 📊 Analytics
+
+Each redirect automatically increments the click count and is displayed in the analytics dashboard.
+
+Example response:
+
+```json
+[
+  {
+    "shortCode": "Ab12Xy",
+    "originalUrl": "https://github.com",
+    "clickCount": 7
+  }
+]
+```
+
+---
 
 ## 📁 Project Structure
 
-```
+```text
 src
 ├── controller
 ├── service
@@ -54,36 +113,70 @@ src
 └── resources
 ```
 
-## 🚀 Getting Started
+---
 
-1. Clone the repository
-2. Configure MySQL
-3. Update `application.properties`
-4. Run the application using Maven or your IDE
+## 🐳 Docker Architecture
 
-##  Learning Objectives
+```text
+Browser
+   │
+   ▼
+Spring Boot Container (8080)
+   │
+   ▼
+MySQL Container (3306)
+   │
+   ▼
+Docker Volume (Persistent Data)
+```
 
-This project is being built to strengthen understanding of:
+The application and database run in separate containers connected through a private Docker network.
 
-- Spring Boot fundamentals
-- REST API development
-- Spring Data JPA
-- MySQL integration
-- Backend architecture
-- Exception handling
-- Validation
-- Git & GitHub workflow
+---
 
-## 📌 Project Status
+## 🧑‍💻 Local Development (Without Docker)
 
-🚧 Currently under active development.
+1. Create a MySQL database named `url_shortener`
+2. Update `application.properties`
+3. Run the application from your IDE or:
 
-New features and improvements are being added incrementally.
+```bash
+./mvnw spring-boot:run
+```
 
-##  Contributing
+---
 
-Contributions, suggestions, and feedback are always welcome.
+## 🎯 Learning Outcomes
 
-## 📄 License
+This project demonstrates:
 
-This project is licensed under the MIT License.
+* REST API Development
+* Layered Architecture
+* Spring Data JPA
+* DTO Design
+* Exception Handling
+* Input Validation
+* Unit Testing
+* Docker Containerization
+* Clean Backend Engineering Practices
+
+---
+
+## 🔮 Future Improvements
+
+* Custom short aliases
+* URL expiration
+* QR code generation
+* User authentication
+* Redis caching
+* Rate limiting
+* Integration testing
+* Cloud deployment (Render/AWS)
+
+---
+
+## 👨‍💻 Author
+
+**Mahesh Kumbhar**
+
+If you found this project useful, consider giving it a ⭐ on GitHub!

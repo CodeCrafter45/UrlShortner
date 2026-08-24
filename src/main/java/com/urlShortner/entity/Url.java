@@ -5,17 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Url {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Getter
-    @Setter
     private String originalUrl;
-    @Getter
-    @Setter
+
     @Column(unique = true)
     private String shortCode;
 
+    private Long clickCount = 0L;
 }
