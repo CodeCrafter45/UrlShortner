@@ -48,8 +48,8 @@ public class UrlService {
         ShortenUrlResponse response = new ShortenUrlResponse();
 
 
-
-         String shortUrl = baseUrl + "/r/" + savedUrl.getShortCode();
+        String cleanBaseUrl = baseUrl.replaceAll("/+$", "");
+         String shortUrl = cleanBaseUrl + "/r/" + savedUrl.getShortCode();
         response.setShortUrl(shortUrl);
 
         return response;
