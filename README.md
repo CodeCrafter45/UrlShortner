@@ -7,14 +7,14 @@ A production-ready **URL Shortener** built with **Spring Boot, MySQL, and Docker
 ##  Features
 
 * 🔗 Generate short URLs instantly
-* ↗️ Redirect using unique short codes
-* 📊 Click analytics dashboard
-* ✅ URL validation with meaningful error messages
-* 📋 One-click copy to clipboard
-* 📚 Interactive API documentation with Swagger UI
-* 🧪 Unit testing with Mockito
-* ⚠️ Global exception handling
-* 🐳 One-command setup using Docker Compose
+* ↗ Redirect using unique short codes
+*  Click analytics dashboard
+*  URL validation with meaningful error messages
+*  One-click copy to clipboard
+*  Interactive API documentation with Swagger UI
+*  Unit testing with Mockito
+*  Global exception handling
+*  One-command setup using Docker Compose
 
 ---
 
@@ -35,7 +35,7 @@ A production-ready **URL Shortener** built with **Spring Boot, MySQL, and Docker
 
 
 
-## 🚀 Run the Project (Recommended)
+## Run the Project (Recommended)
 
 ### Prerequisites
 
@@ -64,14 +64,14 @@ Docker will automatically:
 
 ### 3. Open in your browser
 
-| Service        | URL                                   |
-| -------------- | ------------------------------------- |
-| 🌐 Application | http://localhost:8080                 |
-| 📚 Swagger UI  | http://localhost:8080/swagger-ui.html |
+| Service     | URL                                   |
+|-------------| ------------------------------------- |
+| Application | http://localhost:8080                 |
+| Swagger UI  | http://localhost:8080/swagger-ui.html |
 
 ---
 
-## 🧪 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint           | Description              |
 | ------ | ------------------ | ------------------------ |
@@ -81,7 +81,7 @@ Docker will automatically:
 
 ---
 
-## 📊 Analytics
+##  Analytics
 
 Each redirect automatically increments the click count and is displayed in the analytics dashboard.
 
@@ -99,7 +99,7 @@ Example response:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 src
@@ -115,7 +115,7 @@ src
 
 ---
 
-## 🐳 Docker Architecture
+##  Docker Architecture
 
 ```text
 Browser
@@ -146,7 +146,7 @@ The application and database run in separate containers connected through a priv
 
 ---
 
-## 🎯 Learning Outcomes
+##  Learning Outcomes
 
 This project demonstrates:
 
@@ -162,7 +162,7 @@ This project demonstrates:
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 * Custom short aliases
 * URL expiration
@@ -175,7 +175,7 @@ This project demonstrates:
 
 ---
 
-## 👨‍💻 Author
+## 👨‍ Author
 
 **Mahesh Kumbhar**
 
